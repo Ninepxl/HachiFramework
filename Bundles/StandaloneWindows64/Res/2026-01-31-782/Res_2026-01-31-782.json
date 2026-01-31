@@ -1,0 +1,36 @@
+{
+    "FileVersion": "2025.9.30",
+    "EnableAddressable": false,
+    "SupportExtensionless": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": true,
+    "ReplaceAssetPathWithAddress": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 1,
+    "BuildPipeline": "EditorSimulateBuildPipeline",
+    "PackageName": "Res",
+    "PackageVersion": "2026-01-31-782",
+    "PackageNote": "2026/1/31 13:02:29",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Res/GameObjectPerfab/Cube.prefab",
+            "AssetGUID": "e4ac5b6667bc0dd4cad93f0de08cdecc",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependBundleIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_res_gameobjectperfab.bundle",
+            "UnityCRC": 0,
+            "FileHash": "21cee7a1a08708f17d35d92511134f0a",
+            "FileCRC": 0,
+            "FileSize": 3009,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        }
+    ]
+}

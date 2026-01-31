@@ -1,0 +1,36 @@
+{
+    "FileVersion": "2025.9.30",
+    "EnableAddressable": false,
+    "SupportExtensionless": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": true,
+    "ReplaceAssetPathWithAddress": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 1,
+    "BuildPipeline": "EditorSimulateBuildPipeline",
+    "PackageName": "Res",
+    "PackageVersion": "Simulate",
+    "PackageNote": "2026/1/31 15:16:18",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Res/Cube.prefab",
+            "AssetGUID": "e4ac5b6667bc0dd4cad93f0de08cdecc",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependBundleIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_res.bundle",
+            "UnityCRC": 0,
+            "FileHash": "9839d17387e1c1fce30b60cecfd6b4b8",
+            "FileCRC": 0,
+            "FileSize": 3009,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        }
+    ]
+}
