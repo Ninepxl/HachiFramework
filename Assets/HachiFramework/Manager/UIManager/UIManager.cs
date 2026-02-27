@@ -178,7 +178,7 @@ namespace HachiFramework
                 return;
             }
             info.state = UIState.Loading;
-            LoadAndCreatePanelAsync(info, null).Forget();
+            LoadAndCreatePanelAsync(info, param).Forget();
         }
         /// <summary>
         /// 关闭面板（销毁）
