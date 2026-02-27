@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using YooAsset;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 namespace HachiFramework
 {
@@ -34,9 +35,9 @@ namespace HachiFramework
             return LoadAssetInternal<T>(path, parent);
         }
 
-        public async UniTask<T> LoadAssetAsync<T>(string path, System.Action<T> callBack, Transform parent = null) where T : Object
+        public async UniTask<T> LoadAssetAsync<T>(string path, Transform parent = null) where T : Object
         {
-            var asset = await LoadAssetAsyncInternal<T>(path, parent, callBack);
+            var asset = await LoadAssetAsyncInternal<T>(path, parent);
             return asset;
         }
 
@@ -95,7 +96,7 @@ namespace HachiFramework
         }
 
         // 对于异步加载有多种方法这里统一使用UniTask，如果想支持其他方法可以自行扩展
-        private async UniTask<T> LoadAssetAsyncInternal<T>(string path, Transform parent, System.Action<T> callBack = null) where T : Object
+        private async UniTask<T> LoadAssetAsyncInternal<T>(string path, Transform parent = null) where T : Object
         {
             T obj = null;
             if (!path.StartsWith(ResPackageDefine.ResPrefix))
@@ -125,7 +126,6 @@ namespace HachiFramework
                 obj = handle.AssetObject as T;
             }
             AddHandleInternal(obj, handle);
-            callBack?.Invoke(obj);
             return obj;
         }
         #endregion
@@ -192,6 +192,52 @@ namespace HachiFramework
         #endregion
 
         #region Scene
+        /// <summary>
+        /// 异步加载场景
+        /// </summary>
+        /// <param name="sceneName">场景名称或路径</param>
+        /// <param name="sceneMode">加载模式</param>
+        /// <param name="onProgress">加载进度回调 (0-1)</param>
+        /// <returns>场景句柄，用于后续卸载</returns>
+        public async UniTask<SceneHandle> LoadSceneAsync(string sceneName, LoadSceneMode sceneMode = LoadSceneMode.Single, System.Action<float>
+        onProgress = null)
+        {
+            var sceneHandle = YooAssets.LoadSceneAsync(sceneName, sceneMode);
+
+            // 等待加载完成，同时报告进度
+            while (!sceneHandle.IsDone)
+            {
+                onProgress?.Invoke(sceneHandle.Progress);
+                await UniTask.Yield();
+            }
+            onProgress?.Invoke(1.0f);
+
+            if (sceneHandle.Status != EOperationStatus.Succeed)
+            {
+                Debug.LogError($"[AssetManager] 场景加载失败: {sceneName}, Error: {sceneHandle.LastError}");
+                return null;
+            }
+
+            Debug.Log($"[AssetManager] 场景加载成功: {sceneName}");
+            return sceneHandle;
+        }
+
+        /// <summary>
+        /// 卸载场景
+        /// </summary>
+        /// <param name="sceneHandle">场景句柄</param>
+        public async UniTask UnloadSceneAsync(SceneHandle sceneHandle)
+        {
+            if (sceneHandle == null || !sceneHandle.IsValid)
+            {
+                Debug.LogWarning("[AssetManager] 无效的场景句柄");
+                return;
+            }
+
+            var unloadOp = sceneHandle.UnloadAsync();
+            await unloadOp.ToUniTask();
+            Debug.Log("[AssetManager] 场景卸载成功");
+        }
         #endregion
     }
 }

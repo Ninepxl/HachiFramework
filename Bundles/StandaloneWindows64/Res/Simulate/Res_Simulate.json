@@ -10,12 +10,12 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "Res",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/1/31 15:16:18",
+    "PackageNote": "2026/2/27 13:02:32",
     "AssetList": [
         {
             "Address": "",
-            "AssetPath": "Assets/Res/Cube.prefab",
-            "AssetGUID": "e4ac5b6667bc0dd4cad93f0de08cdecc",
+            "AssetPath": "Assets/Res/Prefabs/UIRoot.prefab",
+            "AssetGUID": "2d6355712eb34f84fa5c0f6c3cd8a853",
             "AssetTags": [],
             "BundleID": 0,
             "DependBundleIDs": []
@@ -23,11 +23,11 @@
     ],
     "BundleList": [
         {
-            "BundleName": "assets_res.bundle",
+            "BundleName": "assets_res_prefabs.bundle",
             "UnityCRC": 0,
-            "FileHash": "9839d17387e1c1fce30b60cecfd6b4b8",
+            "FileHash": "3046f6507d0941d6114a990d09de7964",
             "FileCRC": 0,
-            "FileSize": 3009,
+            "FileSize": 24115,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

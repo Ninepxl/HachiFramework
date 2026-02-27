@@ -135,7 +135,6 @@ namespace HachiFramework
         {
             // 自动收集当前GameObject及其子物体上所有的IGameComponent
             var allComponents = GetComponentsInChildren<IGameManager>(true);
-
             foreach (var item in allComponents)
             {
                 Reg(item);
@@ -203,6 +202,7 @@ namespace HachiFramework
         #region Unity
         void Awake()
         {
+            // 饿汉式单例加载
             if (m_instance != null)
             {
                 Destroy(this);

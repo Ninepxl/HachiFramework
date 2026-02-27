@@ -10,7 +10,7 @@ namespace HachiFramework
         public virtual void OnCreate(StateMachine machine)
         {
             Machine = machine;
-            Debug.Log($"[ProcedureManager]流程节点创建成功: {GetType().FullName}");
+            // Debug.Log($"[ProcedureManager]流程节点创建成功: {GetType().FullName}");
         }
 
         public virtual void OnEnter()
