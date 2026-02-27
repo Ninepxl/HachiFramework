@@ -63,7 +63,7 @@ namespace HachiFramework
         #endregion
 
         #region Internal
-        public T LoadAssetInternal<T>(string path, Transform parent) where T : Object
+        private T LoadAssetInternal<T>(string path, Transform parent) where T : Object
         {
             T obj = null;
             if (!path.StartsWith(ResPackageDefine.ResPrefix))

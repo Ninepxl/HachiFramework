@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -118,7 +120,7 @@ namespace HachiFramework
         /// <summary>
         /// 打开面板
         /// </summary>
-        public void Open(UIConfig config, object param = null)
+        public void OpenUI(UIConfig config, object param = null)
         {
             if (!m_UIInfoDict.TryGetValue(config.ID, out var info))
             {
@@ -149,11 +151,39 @@ namespace HachiFramework
             info.state = UIState.Loading;
             LoadAndCreatePanel(info, param);
         }
+        public async UniTaskVoid OpenUIAsync(UIConfig config, object param = null)
+        {
+            if (!m_UIInfoDict.TryGetValue(config.ID, out var info))
+            {
+                Debug.LogError($"[UIManager] 面板未注册 ID:{config.ID}");
+                return;
+            }
 
+            // 已经在显示中，直接返回
+            if (info.state == UIState.Show)
+            {
+                return;
+            }
+
+            // 已隐藏，直接重新显示
+            if (info.state == UIState.Hide)
+            {
+                Show(info, param);
+                return;
+            }
+
+            // 正在加载中，忽略
+            if (info.state == UIState.Loading)
+            {
+                return;
+            }
+            info.state = UIState.Loading;
+            LoadAndCreatePanelAsync(info, null).Forget();
+        }
         /// <summary>
         /// 关闭面板（销毁）
         /// </summary>
-        public void Close(int uid)
+        public void CloseUI(int uid)
         {
             if (!m_UIInfoDict.TryGetValue(uid, out var info))
             {
@@ -192,15 +222,15 @@ namespace HachiFramework
         /// <summary>
         /// 通过 UIConfig 关闭面板
         /// </summary>
-        public void Close(UIConfig config)
+        public void CloseUI(UIConfig config)
         {
-            Close(config.ID);
+            CloseUI(config.ID);
         }
 
         /// <summary>
         /// 隐藏面板（不销毁，可快速恢复）
         /// </summary>
-        public void Hide(UIConfig config)
+        public void HideUI(UIConfig config)
         {
             if (!m_UIInfoDict.TryGetValue(config.ID, out var info))
             {
@@ -238,7 +268,7 @@ namespace HachiFramework
             var keys = new List<int>(m_UIInfoDict.Keys);
             foreach (var uid in keys)
             {
-                Close(uid);
+                CloseUI(uid);
             }
             m_PanelStack.Clear();
         }
@@ -329,6 +359,64 @@ namespace HachiFramework
             CreateMVC(info, param);
         }
 
+        private async UniTaskVoid LoadAndCreatePanelAsync(UIInfo info, object param)
+        {
+            var assetManager = GameEntry.Instance.Get<AssetManager>();
+            var layerName = info.config.Layer.ToString();
+
+            if (!m_CanvasDict.TryGetValue(layerName, out var canvasRect))
+            {
+                Debug.LogError($"[UIManager] 找不到层级 Canvas: {layerName}");
+                info.state = UIState.None;
+                return;
+            }
+
+            var go = await assetManager.LoadAssetAsync<GameObject>(info.config.PrefabPath, canvasRect);
+            if (go == null)
+            {
+                Debug.LogError($"[UIManager] 加载面板失败: {info.config.PrefabPath}");
+                info.state = UIState.None;
+                return;
+            }
+
+            // 如果在加载期间被关闭了
+            if (info.state == UIState.None)
+            {
+                assetManager.ReleaseObj(go);
+                return;
+            }
+
+            // 设置 RectTransform 铺满父节点
+            var rect = go.GetComponent<RectTransform>();
+            if (rect != null)
+            {
+                rect.localScale = Vector3.one;
+                rect.localPosition = Vector3.zero;
+                rect.anchorMin = Vector2.zero;
+                rect.anchorMax = Vector2.one;
+                rect.offsetMin = Vector2.zero;
+                rect.offsetMax = Vector2.zero;
+            }
+
+            // 确保有 CanvasGroup（用于显隐控制）
+            var canvasGroup = go.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = go.AddComponent<CanvasGroup>();
+            }
+
+            // 先隐藏，等生命周期走完再显示
+            canvasGroup.alpha = 0f;
+            canvasGroup.blocksRaycasts = false;
+
+            // 填充 UIInfo
+            info.go = go;
+            info.canvasGroup = canvasGroup;
+
+            // 通过 UIConfig 的工厂方法创建 MVC 实例（泛型，零反射）
+            CreateMVC(info, param);
+        }
+
         private void CreateMVC(UIInfo info, object param)
         {
             // 通过 UIConfig 中注册的工厂委托创建实例
@@ -366,7 +454,7 @@ namespace HachiFramework
 
             // 压栈
             var layer = info.config.Layer;
-            if (layer == UILayer.First || layer == UILayer.Second)
+            if ((layer == UILayer.First || layer == UILayer.Second) && !m_PanelStack.Contains(info.uid))
             {
                 m_PanelStack.Push(info.uid);
             }

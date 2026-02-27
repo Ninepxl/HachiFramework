@@ -54,7 +54,7 @@ namespace HachiFramework
         /// </summary>
         public void Close()
         {
-            GameEntry.Instance.Get<UIManager>()?.Close(uid);
+            GameEntry.Instance.Get<UIManager>()?.CloseUI(uid);
         }
     }
 }
