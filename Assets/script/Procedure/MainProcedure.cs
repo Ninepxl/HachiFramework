@@ -9,11 +9,7 @@ namespace ActGame
         public override void OnEnter()
         {
             base.OnEnter();
-            LoadPlayerAndScene().Forget();
-        }
-        private async UniTaskVoid LoadPlayerAndScene()
-        {
-            await GameEntry.assetManager.LoadAssetAsync<GameObject>("Cube.prefab", null);
+            GameEntry.uIManager.OpenUI(UIDefine.MenuUI);
         }
     }
 }

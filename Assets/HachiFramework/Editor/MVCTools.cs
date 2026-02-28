@@ -19,7 +19,7 @@ namespace HachiFramework.Editor
         private const string ScriptRootPath = "Assets/script/UI/";
 
         /// <summary>UI 预制体根目录</summary>
-        private const string PrefabRootPath = "Assets/Res/UI/";
+        private const string PrefabRootPath = "Assets/Res/Prefabs/UI/";
 
         /// <summary>UIDefine.cs 文件路径</summary>
         private const string UIDefinePath = "Assets/HachiFramework/Manager/UIManager/UIDefine.cs";

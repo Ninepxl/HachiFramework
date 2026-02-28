@@ -1,0 +1,62 @@
+{
+    "FileVersion": "2025.9.30",
+    "EnableAddressable": false,
+    "SupportExtensionless": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": true,
+    "ReplaceAssetPathWithAddress": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 1,
+    "BuildPipeline": "EditorSimulateBuildPipeline",
+    "PackageName": "Res",
+    "PackageVersion": "2026-02-27-1363",
+    "PackageNote": "2026/2/27 22:43:27",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Res/Prefabs/GameFramework.prefab",
+            "AssetGUID": "01d4e58d9b7dde942b863337e7fce85e",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Res/Prefabs/UI/UIMenuPanel.prefab",
+            "AssetGUID": "34f75edd4d720b1418b817657d85b5c3",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Res/Prefabs/UIRoot.prefab",
+            "AssetGUID": "2d6355712eb34f84fa5c0f6c3cd8a853",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependBundleIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_res_prefabs.bundle",
+            "UnityCRC": 0,
+            "FileHash": "3046f6507d0941d6114a990d09de7964",
+            "FileCRC": 0,
+            "FileSize": 32967,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        },
+        {
+            "BundleName": "assets_res_prefabs_ui.bundle",
+            "UnityCRC": 0,
+            "FileHash": "f7bff395bfec38bf99f92de151c58253",
+            "FileCRC": 0,
+            "FileSize": 15688,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        }
+    ]
+}

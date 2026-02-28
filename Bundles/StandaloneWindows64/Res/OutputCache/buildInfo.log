@@ -1,15 +1,15 @@
-﻿2026-01-31 13:02:29.100 [INFO] Begin to build package : Res by EditorSimulateBuildPipeline
-2026-01-31 13:02:29.100 [INFO] --------------------------------------------->TaskPrepare<--------------------------------------------
-2026-01-31 13:02:29.100 [INFO] TaskPrepare It takes 0 seconds in total
-2026-01-31 13:02:29.100 [INFO] --------------------------------------------->TaskGetBuildMap<--------------------------------------------
-2026-01-31 13:02:29.100 [INFO] TaskGetBuildMap It takes 0 seconds in total
-2026-01-31 13:02:29.101 [INFO] --------------------------------------------->TaskUpdateBundleInfo<--------------------------------------------
-2026-01-31 13:02:29.101 [INFO] TaskUpdateBundleInfo It takes 0 seconds in total
-2026-01-31 13:02:29.101 [INFO] --------------------------------------------->TaskCreateManifest<--------------------------------------------
-2026-01-31 13:02:29.103 [INFO] Create package manifest file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-01-31-782/Res_2026-01-31-782.json
-2026-01-31 13:02:29.117 [INFO] Create package manifest file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-01-31-782/Res_2026-01-31-782.bytes
-2026-01-31 13:02:29.118 [INFO] Create package manifest hash file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-01-31-782/Res_2026-01-31-782.hash
-2026-01-31 13:02:29.118 [INFO] Create package manifest version file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-01-31-782/Res.version
-2026-01-31 13:02:29.120 [INFO] TaskCreateManifest It takes 0 seconds in total
-2026-01-31 13:02:29.120 [INFO] Total build process time: 0 seconds
-2026-01-31 13:02:29.120 [INFO] Resource pipeline build success
+﻿2026-02-27 22:43:27.723 [INFO] Begin to build package : Res by EditorSimulateBuildPipeline
+2026-02-27 22:43:27.723 [INFO] --------------------------------------------->TaskPrepare<--------------------------------------------
+2026-02-27 22:43:27.723 [INFO] TaskPrepare It takes 0 seconds in total
+2026-02-27 22:43:27.723 [INFO] --------------------------------------------->TaskGetBuildMap<--------------------------------------------
+2026-02-27 22:43:27.723 [INFO] TaskGetBuildMap It takes 0 seconds in total
+2026-02-27 22:43:27.723 [INFO] --------------------------------------------->TaskUpdateBundleInfo<--------------------------------------------
+2026-02-27 22:43:27.724 [INFO] TaskUpdateBundleInfo It takes 0 seconds in total
+2026-02-27 22:43:27.724 [INFO] --------------------------------------------->TaskCreateManifest<--------------------------------------------
+2026-02-27 22:43:27.725 [INFO] Create package manifest file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-02-27-1363/Res_2026-02-27-1363.json
+2026-02-27 22:43:27.736 [INFO] Create package manifest file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-02-27-1363/Res_2026-02-27-1363.bytes
+2026-02-27 22:43:27.737 [INFO] Create package manifest hash file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-02-27-1363/Res_2026-02-27-1363.hash
+2026-02-27 22:43:27.737 [INFO] Create package manifest version file: E:/UnityProject/MyFrameworkV1/Bundles/StandaloneWindows64/Res/2026-02-27-1363/Res.version
+2026-02-27 22:43:27.738 [INFO] TaskCreateManifest It takes 0 seconds in total
+2026-02-27 22:43:27.738 [INFO] Total build process time: 0 seconds
+2026-02-27 22:43:27.738 [INFO] Resource pipeline build success

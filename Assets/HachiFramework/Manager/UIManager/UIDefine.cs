@@ -77,11 +77,16 @@ namespace HachiFramework
         //     1, UILayer.First, "UI/UILogin.prefab"
         // );
 
+        public static readonly UIConfig MenuUI = UIConfig.Create<MenuUICtrl, MenuUIView, MenuUIModel>(
+            1, UILayer.First, "Prefabs/UI/UIMenuPanel.prefab"
+        );
+
         /// <summary>
         /// 所有面板配置，UIManager 启动时遍历注册
         /// </summary>
         public static readonly UIConfig[] All = new UIConfig[]
         {
+                MenuUI,
             // Login,
         };
     }
