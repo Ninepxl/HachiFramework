@@ -10,7 +10,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "Res",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/2/28 12:16:14",
+    "PackageNote": "2026/3/4 16:57:22",
     "AssetList": [
         {
             "Address": "",
@@ -22,10 +22,10 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Res/Prefabs/UI/UIMenuPanel.prefab",
-            "AssetGUID": "34f75edd4d720b1418b817657d85b5c3",
+            "AssetPath": "Assets/Res/Prefabs/MainPlayer.prefab",
+            "AssetGUID": "4567adbf5663a5b4ebb75607c047eaf0",
             "AssetTags": [],
-            "BundleID": 1,
+            "BundleID": 0,
             "DependBundleIDs": []
         },
         {
@@ -43,17 +43,7 @@
             "UnityCRC": 0,
             "FileHash": "3046f6507d0941d6114a990d09de7964",
             "FileCRC": 0,
-            "FileSize": 34269,
-            "Encrypted": false,
-            "Tags": [],
-            "DependBundleIDs": []
-        },
-        {
-            "BundleName": "assets_res_prefabs_ui.bundle",
-            "UnityCRC": 0,
-            "FileHash": "f7bff395bfec38bf99f92de151c58253",
-            "FileCRC": 0,
-            "FileSize": 18796,
+            "FileSize": 176302,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

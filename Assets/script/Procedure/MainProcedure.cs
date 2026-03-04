@@ -9,7 +9,6 @@ namespace ActGame
         public override void OnEnter()
         {
             base.OnEnter();
-            GameEntry.uIManager.OpenUI(UIDefine.MenuUI);
         }
     }
 }
