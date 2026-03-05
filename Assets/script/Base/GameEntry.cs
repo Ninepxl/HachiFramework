@@ -6,7 +6,7 @@ namespace ActGame
         public static AssetManager assetManager => HachiFramework.GameEntry.Instance.Get<AssetManager>();
         public static GamePoolManager poolManager => HachiFramework.GameEntry.Instance.Get<GamePoolManager>();
         public static UIManager uIManager => HachiFramework.GameEntry.Instance.Get<UIManager>();
-
         public static InputManager inputManager => HachiFramework.GameEntry.Instance.Get<InputManager>();
+        public static TimerManager timerManager => HachiFramework.GameEntry.Instance.Get<TimerManager>();
     }
 }

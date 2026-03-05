@@ -1,5 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using HachiFramework;
 using UnityEngine;
 
 namespace ActGame
@@ -34,10 +35,24 @@ namespace ActGame
         protected readonly float m_characterVerticalMaxVelocity = -54f; // 角色Y轴最大速度
         protected Vector3 m_characterVerticalDirection; // 角色Y轴移动方向（需要将移动的方向和重力控制的方向分别判断）
         protected Vector2 m_movementDirection; // 玩家移动的方向
+        private HashSet<IDisposable> m_eventList = new();
         protected virtual void Awake()
         {
             m_control = GetComponent<CharacterController>();
             m_animator = GetComponent<Animator>();
+        }
+        void OnEnable()
+        {
+            m_eventList.Add(MessageBroker<ChangeVelocityEvent>.Default.Subscribe(ChangetCHaracterVerticalVelocity));
+        }
+
+        void OnDisable()
+        {
+            foreach (var item in m_eventList)
+            {
+                item.Dispose();
+            }
+            m_eventList.Clear();
         }
 
         protected virtual void Update()
@@ -137,6 +152,11 @@ namespace ActGame
         {
             Vector3 detectionPos = new Vector3(transform.position.x, transform.position.y - m_groundDetectionPositionOffset, transform.position.z);
             Gizmos.DrawWireSphere(detectionPos, m_detectionRange);
+        }
+
+        private void ChangetCHaracterVerticalVelocity(ChangeVelocityEvent velocity)
+        {
+            Debug.Log("角色速度改变: " + velocity);
         }
 
     }
