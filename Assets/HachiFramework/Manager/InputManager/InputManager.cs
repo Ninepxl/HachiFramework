@@ -10,7 +10,7 @@ namespace HachiFramework
         public Vector2 Movement => m_inputs.GameInput.Movement.ReadValue<Vector2>();
         public Vector2 CameraLook => m_inputs.GameInput.CameraLookAt.ReadValue<Vector2>();
         public bool HasInput => Movement.x != 0 || Movement.y != 0;
-        public bool Run => m_inputs.GameInput.Run.IsPressed();
+        public bool Run => m_inputs.GameInput.Run.triggered;
         public void OnAwake()
         {
             Debug.Log("InputManager Initialize");

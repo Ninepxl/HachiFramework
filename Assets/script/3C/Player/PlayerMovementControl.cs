@@ -48,7 +48,10 @@ namespace ActGame
             m_animator.SetBool("HasInput", GameEntry.inputManager.Movement != Vector2.zero);
             if (m_animator.GetBool("HasInput"))
             {
-                m_animator.SetBool("Run", GameEntry.inputManager.Run);
+                if (GameEntry.inputManager.Run)
+                {
+                    m_animator.SetBool("Run", true);
+                }
                 m_animator.SetFloat("Movement", m_animator.GetBool("Run") ? 2f : GameEntry.inputManager.Movement.sqrMagnitude, 0.25f, Time.deltaTime);
             }
             else
@@ -60,5 +63,6 @@ namespace ActGame
                 }
             }
         }
+        // 
     }
 }
